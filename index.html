@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع دردشة</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Browser Controller</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="chat-container">
-        <header class="chat-header">
-            <h1>دردشة عامة</h1>
-        </header>
-        
-        <div class="chat-messages" id="chat-messages">
-            <!-- الرسائل تظهر هنا -->
-        </div>
-        
-        <div class="chat-input">
-            <input type="text" id="message-input" placeholder="اكتب رسالتك هنا..." autocomplete="off">
-            <button id="send-btn">إرسال</button>
-        </div>
+  <div class="container">
+    <div class="row">
+      <input type="text" id="geminiApi" placeholder="Enter Gemini API Key" />
+      <button id="saveGemini">Save</button>
     </div>
-
-    <script src="script.js"></script>
+    <div class="row">
+      <input type="text" id="userAgent" placeholder="Enter User Agent" />
+      <button id="saveUserAgent">Save</button>
+    </div>
+    <textarea id="taskInput" placeholder="Enter the task for the agent"></textarea>
+    <button id="runTask">Enter</button>
+    <div id="browserView">Browser view will appear here</div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
