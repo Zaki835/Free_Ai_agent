@@ -1,16 +1,47 @@
-// script.js
+// عناصر الإدخال
+const apiGeminiInput = document.getElementById('apiGemini');
+const userAgentInput = document.getElementById('userAgent');
+const ngrokKeyInput = document.getElementById('ngrokKey');
+const customInput = document.getElementById('customInput');
+const webview = document.getElementById('webview');
 
-document.addEventListener("DOMContentLoaded", () => { const geminiInput = document.getElementById("geminiApi"); const userAgentInput = document.getElementById("userAgent"); const taskInput = document.getElementById("taskInput");
+// تحميل البيانات المحفوظة
+window.onload = () => {
+  const savedApi = localStorage.getItem('apiGemini');
+  const savedUserAgent = localStorage.getItem('userAgent');
+  if (savedApi) apiGeminiInput.value = savedApi;
+  if (savedUserAgent) userAgentInput.value = savedUserAgent;
+};
 
-// Load from localStorage geminiInput.value = localStorage.getItem("geminiApi") || ""; userAgentInput.value = localStorage.getItem("userAgent") || "";
+// حفظ API
+function saveApiGemini() {
+  localStorage.setItem('apiGemini', apiGeminiInput.value.trim());
+  alert('API Gemini Saved!');
+}
 
-// Save Gemini API document.getElementById("saveGemini").addEventListener("click", () => { const value = geminiInput.value.trim(); if (value) { localStorage.setItem("geminiApi", value); alert("Gemini API key saved!"); } });
+// حفظ User Agent
+function saveUserAgent() {
+  localStorage.setItem('userAgent', userAgentInput.value.trim());
+  alert('User Agent Saved!');
+}
 
-// Save User Agent document.getElementById("saveUserAgent").addEventListener("click", () => { const value = userAgentInput.value.trim(); if (value) { localStorage.setItem("userAgent", value); alert("User Agent saved!"); } });
+// لا يتم حفظ مفتاح ngrok
+function noSaveNgrok() {
+  alert('Ngrok key is not stored!');
+}
 
-// Run Task button handler (to be extended) document.getElementById("runTask").addEventListener("click", () => { const task = taskInput.value.trim(); if (!task) return alert("Please enter a task.");
+// تنفيذ عند الضغط على INTER
+function runInter() {
+  const userAgent = localStorage.getItem('userAgent') || '';
+  const input = customInput.value.trim();
+  if (input === '') {
+    alert('Please enter a URL or command.');
+    return;
+  }
 
-const geminiApi = localStorage.getItem("geminiApi"); const userAgent = localStorage.getItem("userAgent"); if (!geminiApi || !userAgent) { return alert("Please make sure Gemini API and User Agent are saved."); } // Placeholder: show task and simulate browser behavior document.getElementById("browserView").textContent = `Running: ${task}...`; // هنا لاحقاً يتم الاتصال بـ backend أو playwright 
+  // فتح الرابط داخل iframe
+  webview.src = input;
 
-}); });
-
+  // تعديل User Agent (تنبيه فقط لأن تغيير user agent من iframe يتطلب حلول متقدمة)
+  console.log("Using User Agent: " + userAgent);
+}
