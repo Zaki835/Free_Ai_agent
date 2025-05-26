@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Browser Controller</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Interface</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <div class="row">
-      <input type="text" id="geminiApi" placeholder="Enter Gemini API Key" />
-      <button id="saveGemini">Save</button>
+      <input type="text" id="geminiApi" placeholder="API Gemini">
+      <button onclick="saveData('geminiApi')">SAVE</button>
     </div>
+
     <div class="row">
-      <input type="text" id="userAgent" placeholder="Enter User Agent" />
-      <button id="saveUserAgent">Save</button>
+      <input type="text" id="userAgent" placeholder="User Agent">
+      <button onclick="saveData('userAgent')">SAVE</button>
     </div>
-    <textarea id="taskInput" placeholder="Enter the task for the agent"></textarea>
-    <button id="runTask">Enter</button>
-    <div id="browserView">Browser view will appear here</div>
+
+    <div class="row">
+      <input type="text" id="ngrokKey" placeholder="Key Ngrok">
+      <button onclick="saveData('ngrokKey')">SAVE</button>
+    </div>
+
+    <textarea id="taskInput" placeholder="اكتب المهمة هنا..."></textarea>
+    <button id="interBtn" onclick="sendTask()">INTER</button>
+
+    <iframe id="webView" src=""></iframe>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
